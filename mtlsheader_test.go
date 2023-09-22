@@ -1,13 +1,11 @@
 // Package traefik_plugin_mtls_header_test a test suit for custom header plugin
-// nolint
-package traefik_plugin_mtls_header_test
+package traefik_plugin_mtls_header //nolint:revive,stylecheck
 
 import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"
-	traefik_plugin_mtls_header "github.com/pnxs/traefik-plugin-mtls-header"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -34,8 +32,8 @@ DqH21BZ19OniZNd5kW5xUaF7J0A=
 -----END CERTIFICATE-----
 `
 
-func TestMtlsHeader(t *testing.T) {
-	cfg := traefik_plugin_mtls_header.CreateConfig()
+func TestMtlsheader(t *testing.T) {
+	cfg := CreateConfig()
 
 	cfg.Headers["X-Host"] = "[[.Request.Host]]"
 	cfg.Headers["X-Method"] = "[[.Request.Method]]"
@@ -56,7 +54,7 @@ func TestMtlsHeader(t *testing.T) {
 
 	certChain := []*x509.Certificate{clientCert}
 
-	handler, err := traefik_plugin_mtls_header.New(ctx, next, cfg, "mTLS Header Plugin")
+	handler, err := New(ctx, next, cfg, "mTLS Header Plugin")
 	if err != nil {
 		t.Fatal(err)
 	}

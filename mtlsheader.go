@@ -1,6 +1,5 @@
 // Package traefik_plugin_mtls_header a custom header plugin
-// nolint
-package traefik_plugin_mtls_header
+package traefik_plugin_mtls_header //nolint:revive,stylecheck
 
 import (
 	"bytes"
@@ -36,7 +35,7 @@ type MtlsHeader struct {
 }
 
 // New created a new MtlsHeader plugin.
-func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
+func New(_ context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	if len(config.Headers) == 0 {
 		return nil, fmt.Errorf("headers cannot be empty")
 	}
@@ -56,7 +55,6 @@ type data struct {
 }
 
 func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-
 	d := data{
 		Request: req,
 		Cert:    nil,
