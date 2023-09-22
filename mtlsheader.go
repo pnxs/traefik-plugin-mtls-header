@@ -83,7 +83,7 @@ func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			return
 		}
 
-		if a.encodeURL == true {
+		if a.encodeURL {
 			req.Header.Set(key, url.QueryEscape(writer.String()))
 		} else {
 			req.Header.Set(key, writer.String())
