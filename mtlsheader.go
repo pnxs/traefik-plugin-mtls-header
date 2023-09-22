@@ -57,7 +57,7 @@ type data struct {
 
 func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
-	data := data{
+	d := data{
 		Request: req,
 		Cert:    nil,
 	}
@@ -65,7 +65,7 @@ func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	// load certificate
 	if req.TLS != nil && len(req.TLS.PeerCertificates) > 0 {
 		for _, cert := range req.TLS.PeerCertificates {
-			data.Cert = cert
+			d.Cert = cert
 			break
 		}
 	}
@@ -79,7 +79,7 @@ func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		writer := &bytes.Buffer{}
 
-		err = tmpl.Execute(writer, data)
+		err = tmpl.Execute(writer, d)
 		if err != nil {
 			http.Error(rw, err.Error(), http.StatusInternalServerError)
 			return
