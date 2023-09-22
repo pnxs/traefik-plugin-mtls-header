@@ -1,0 +1,12 @@
+displayName: mTLS Header Plugin
+type: middleware
+iconPath: .assets/icon.png
+
+import: github.com/pnxs/traefik-plugin-mtls-header
+
+summary: 'Variable mTLS PassTLSClientCert'
+
+testData:
+  headers:
+    X-Client-DN: 'CN={{cert.cn}}'
+  encodeUrl: false
