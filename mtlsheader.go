@@ -48,14 +48,14 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 	}, nil
 }
 
-type Data struct {
+type data struct {
 	Request *http.Request
 	Cert    *x509.Certificate
 }
 
 func (a *MtlsHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
-	data := Data{
+	data := data{
 		Request: req,
 		Cert:    nil,
 	}
