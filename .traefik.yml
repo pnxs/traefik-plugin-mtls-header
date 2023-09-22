@@ -8,5 +8,5 @@ summary: 'Variable mTLS PassTLSClientCert'
 
 testData:
   headers:
-    X-Client-CN: 'CN=[[cert.cn]]'
+    X-Client-CN: 'CN=[[.Cert.Subject.CommonName]]'
   encodeUrl: false
