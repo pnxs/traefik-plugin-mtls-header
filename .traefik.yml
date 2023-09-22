@@ -8,5 +8,5 @@ summary: 'Variable mTLS PassTLSClientCert'
 
 testData:
   headers:
-    X-Client-DN: 'CN={{cert.cn}}'
+    X-Client-CN: 'CN=[[cert.cn]]'
   encodeUrl: false
