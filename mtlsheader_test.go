@@ -1,4 +1,5 @@
 // Package traefik_plugin_mtls_header_test a test suit for custom header plugin
+// nolint
 package traefik_plugin_mtls_header_test
 
 import (
